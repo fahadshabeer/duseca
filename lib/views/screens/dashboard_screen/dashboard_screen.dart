@@ -31,6 +31,7 @@ class DashboardScreen extends StatelessWidget {
         padding: EdgeInsets.all(8.0),
         child: ListView(
           children: [
+            10.verticalSpace,
             OverviewHeader(),
             SizedBox(height: 10.h),
             FollowersCard(),

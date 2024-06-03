@@ -19,7 +19,10 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       child: MaterialApp(
         theme: ThemeData(
-          scaffoldBackgroundColor: AppColors.scaffoldColor
+          scaffoldBackgroundColor: AppColors.scaffoldColor,
+          appBarTheme: AppBarTheme(
+            backgroundColor: AppColors.scaffoldColor
+          )
         ),
         home: DashboardScreen(),
       ),

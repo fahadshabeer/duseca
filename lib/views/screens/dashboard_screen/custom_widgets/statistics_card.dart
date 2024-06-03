@@ -1,4 +1,5 @@
 import 'package:duseca_task/views/screens/dashboard_screen/custom_widgets/total_and_growth_rate_widget.dart';
+import 'package:duseca_task/views/shared_components/week_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -26,6 +27,8 @@ class StatisticsCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const HeadingAndMoreWidget(heading: "Statistics"),
+          10.verticalSpace,
+          WeekDropDown(),
           10.verticalSpace,
            Row(
             children: [
@@ -109,8 +112,3 @@ class StatisticsCard extends StatelessWidget {
     );
   }
 }
-
-
-/*
-https://www.figma.com/design/zhQJFznBKU4bmyUMAzuHj3/Untitled?node-id=0-1&t=JXYky4znXJ0eWeEz-1
- */
