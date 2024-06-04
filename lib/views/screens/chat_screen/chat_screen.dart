@@ -1,31 +1,47 @@
+import 'package:duseca_task/utils/app_icons/app_icons.dart';
+import 'package:duseca_task/utils/custom_avatar_utils.dart';
+import 'package:duseca_task/views/shared_components/custom_appBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
+
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  final navKey=GlobalKey<SliderDrawerState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, size: 24.sp),
-          onPressed: () {},
-        ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Design Team', style: TextStyle(fontSize: 18.sp)),
-            Text('6 Members, 3 Online', style: TextStyle(fontSize: 14.sp, color: Colors.grey)),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.more_vert, size: 24.sp),
-            onPressed: () {},
-          ),
-        ],
+      appBar: CustomAppbar(
+        navKey: navKey,
       ),
       body: Column(
         children: [
+          AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, size: 24.sp),
+              onPressed: () {},
+            ),
+            title:ListTile(
+              leading: CircleAvatar(
+
+              ),
+              title:  Text('Design Team', style: TextStyle(fontSize: 18.sp)),
+             subtitle:  Text('6 Members, 3 Online', style: TextStyle(fontSize: 14.sp, color: Colors.grey)),
+            ),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.more_vert, size: 24.sp),
+                onPressed: () {},
+              ),
+            ],
+          ),
           Expanded(child: ChatList()),
           ChatInputField(),
         ],
@@ -161,10 +177,9 @@ class ChatImageMessage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (!isSender) ...[
-            CircleAvatar(
-              radius: 20.r,
-              backgroundImage: AssetImage('assets/avatar.png'),
-            ),
+           ClipOval(
+             child: SvgPicture.asset(AppIcons.avatar),
+           ),
             SizedBox(width: 12.w),
           ],
           Expanded(
@@ -202,7 +217,7 @@ class ChatFileMessage extends StatelessWidget {
   final String time;
   final bool isSender;
 
-  ChatFileMessage({
+  const ChatFileMessage({super.key,
     required this.sender,
     required this.fileName,
     required this.fileSize,

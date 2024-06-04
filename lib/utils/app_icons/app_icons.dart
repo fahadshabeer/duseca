@@ -13,4 +13,5 @@ class AppIcons
   static const notification="$basicPath/Notification.svg";
   static const settings="$basicPath/settings.svg";
   static const search="$basicPath/search.svg";
+  static const logo="$basicPath/logo.svg";
 }

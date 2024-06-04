@@ -31,6 +31,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return SliderDrawer(
       key: _sliderDrawerKey,
       slider: const AppDrawer(),
+      appBar: null,
       child: Scaffold(
         appBar:  CustomAppbar(
           navKey: _sliderDrawerKey,

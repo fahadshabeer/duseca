@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             surfaceTintColor: Colors.transparent
           )
         ),
-        home: HomeScreen(),
+        home: ChatScreen(),
       ),
     );
   }

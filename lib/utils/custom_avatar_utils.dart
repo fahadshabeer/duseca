@@ -39,4 +39,16 @@ class CustomAvatarUtils {
       end: Alignment.bottomRight,
     );
   }
+
+  Widget getAlphAvatar(String name){
+    return Container(
+      decoration: BoxDecoration(
+        gradient:CustomAvatarUtils.generateRandomLinearGradient(),
+        shape: BoxShape.circle,
+      ),
+      child: Center(
+        child: Text("${name.split(" ").first.characters.first}${name.split(" ").last.characters.first}",style: TextStyle(color: Colors.white),),
+      ),
+    );
+  }
 }

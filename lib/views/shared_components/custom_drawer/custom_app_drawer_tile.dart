@@ -11,7 +11,7 @@ class CustomAppDrawerTile extends StatelessWidget {
 
   final Widget? leadingWidget;
 
-  CustomAppDrawerTile(
+  const CustomAppDrawerTile(
       {super.key,
       required this.icon,
       this.leadingWidget,
@@ -23,15 +23,15 @@ class CustomAppDrawerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
+      child: Container(
 
-          alignment: Alignment.center,
-          height: 56.h,
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-              color: color, borderRadius: BorderRadius.circular(16.sp)),
+        height: 56.h,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(16.sp)),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(14.sp),
           child: Row(
             children: [
               15.horizontalSpace,
