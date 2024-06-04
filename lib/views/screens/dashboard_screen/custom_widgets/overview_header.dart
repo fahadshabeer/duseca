@@ -1,4 +1,6 @@
+import 'package:duseca_task/utils/app_icons/app_icons.dart';
 import 'package:duseca_task/utils/colors/app_colors.dart';
+import 'package:duseca_task/views/shared_components/sqaure_icon_button.dart';
 import 'package:duseca_task/views/shared_components/week_dropdown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,21 +15,10 @@ class OverviewHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-         Container(
-           height: 43.sp,
-           width: 43.sp,
-           decoration: BoxDecoration(
-             color: AppColors.scaffoldColor,
-             borderRadius: BorderRadius.circular(10.sp),
-             boxShadow: [
-               BoxShadow(
-                 color: Colors.grey,
-                 blurRadius: 1.sp,
-                 spreadRadius: 0.1
-               )
-             ]
-           ),
-         ),
+        SquareIconButton(
+           ico: AppIcons.download,
+          onTap: (){},
+        ),
           10.horizontalSpace,
           Expanded(child: WeekDropDown(color: AppColors.scaffoldColor,)),
         ],

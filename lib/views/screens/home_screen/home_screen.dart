@@ -1,20 +1,20 @@
 import 'package:duseca_task/utils/colors/app_colors.dart';
 import 'package:duseca_task/views/screens/home_screen/custom_widgets/month_week_day_widget.dart';
+import 'package:duseca_task/views/shared_components/custom_appBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'custom_widgets/calendar_widget.dart';
+import 'custom_widgets/upcoming_events_widget/upcoming_events_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Calendar"),
-      ),
-      body: Column(
+      appBar: const CustomAppbar(),
+      body: ListView(
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                       height: 48.h,
                       minWidth: 48.h,
                       onPressed: (){},
-                      child: Icon(Icons.add,color: Colors.white,),
+                      child: const Icon(Icons.add,color: Colors.white,),
                     ),
                   ],
                 ),
@@ -45,40 +45,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: ListView(
-              children: [
-                EventCard(
-                  time: '07:00',
-                  title: 'Brandbook and Guidebook',
-                  subtitle: 'Design',
-                  startTime: '07:00',
-                  participants: [1, 2, 3, 4],
-                ),
-                EventCard(
-                  time: '08:30',
-                  title: 'App Development',
-                  subtitle: 'Coding',
-                  startTime: '08:30',
-                  participants: [1, 2, 3],
-                ),
-                EventCard(
-                  time: '10:00',
-                  title: 'Landing Page',
-                  subtitle: 'Meeting',
-                  startTime: '10:00',
-                  participants: [1, 2, 3, 4],
-                ),
-                EventCard(
-                  time: '11:30',
-                  title: 'Project "Rocket"',
-                  subtitle: 'Meeting',
-                  startTime: '11:30',
-                  participants: [1, 2, 3, 4],
-                ),
-              ],
-            ),
-          ),
+          DesignLayout(),
         ],
       ),
     );

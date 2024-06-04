@@ -21,10 +21,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: AppColors.scaffoldColor,
           appBarTheme: AppBarTheme(
-            backgroundColor: AppColors.scaffoldColor
+            backgroundColor: AppColors.scaffoldColor,
+            surfaceTintColor: Colors.transparent
           )
         ),
-        home: DashboardScreen(),
+        home: HomeScreen(),
       ),
     );
   }

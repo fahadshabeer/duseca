@@ -1,7 +1,9 @@
+import 'package:duseca_task/utils/app_icons/app_icons.dart';
 import 'package:duseca_task/utils/colors/app_colors.dart';
 import 'package:duseca_task/utils/custom_avatar_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ChatTile extends StatelessWidget {
   final String? avatar;
@@ -20,7 +22,7 @@ class ChatTile extends StatelessWidget {
       required this.lastMessage,
       required this.time,
       required this.isUnread,
-        this.isSelected=false,
+      this.isSelected = false,
       this.isTyping = false,
       this.totalUnread = 0});
 
@@ -30,9 +32,11 @@ class ChatTile extends StatelessWidget {
       height: 96.h,
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color:isSelected?Colors.white :AppColors.chatTileColor,
+        color: isSelected ? Colors.white : AppColors.chatTileColor,
         borderRadius: BorderRadius.circular(12.r),
-        boxShadow:isSelected? [BoxShadow(color: Colors.black12, blurRadius: 4.r)]:[],
+        boxShadow: isSelected
+            ? [BoxShadow(color: Colors.black12, blurRadius: 4.r)]
+            : [],
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,12 +53,10 @@ class ChatTile extends StatelessWidget {
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                          "${name.split(" ").first.characters.first}${name.split(" ").last.characters.first}"
-                              .toUpperCase(),
+                        "${name.split(" ").first.characters.first}${name.split(" ").last.characters.first}"
+                            .toUpperCase(),
                         style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp
-                        ),
+                            fontWeight: FontWeight.w600, fontSize: 16.sp),
                       ),
                     ),
                   ),
@@ -62,9 +64,10 @@ class ChatTile extends StatelessWidget {
               : Container(
                   height: 50.sp,
                   width: 50.sp,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(image: AssetImage(avatar!))),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: SvgPicture.asset(AppIcons.avatar),
                 ),
           SizedBox(width: 16.w),
           Expanded(

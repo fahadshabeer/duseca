@@ -13,10 +13,13 @@ class GenderCard extends StatelessWidget {
   final maleColor = Colors.purple;
   final femaleColor = Colors.yellow;
 
+  GenderCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10.sp),
+      height: 400.h,
       margin: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 5.sp),
       decoration: BoxDecoration(
           color: Colors.white,
@@ -33,31 +36,33 @@ class GenderCard extends StatelessWidget {
         children: [
           const HeadingAndMoreWidget(heading: "Gender"),
           SizedBox(height: 10.h),
-          Center(
-            child: FutureBuilder(
-                future: load(),
-                builder: (context, snapshot) {
-                  if(snapshot.hasData) {
-                    return CustomPaint(
-                      size: Size(200.sp, 200.sp),
-                      painter: RingPieChartPainter(
-                          maleColor: maleColor,
-                          femaleColor: femaleColor,
-                          male,
-                          image: snapshot.data,
-                          female),
-                    );
-                  }else{
-                    return CustomPaint(
-                      size: Size(200.sp, 200.sp),
-                      painter: RingPieChartPainter(
-                          maleColor: maleColor,
-                          femaleColor: femaleColor,
-                          male,
-                          female),
-                    );
-                  }
-                }),
+          Expanded(
+            child: Center(
+              child: FutureBuilder(
+                  future: load(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return CustomPaint(
+                        size: Size(200.sp, 200.sp),
+                        painter: RingPieChartPainter(
+                            maleColor: maleColor,
+                            femaleColor: femaleColor,
+                            male,
+                            image: snapshot.data,
+                            female),
+                      );
+                    } else {
+                      return CustomPaint(
+                        size: Size(200.sp, 200.sp),
+                        painter: RingPieChartPainter(
+                            maleColor: maleColor,
+                            femaleColor: femaleColor,
+                            male,
+                            female),
+                      );
+                    }
+                  }),
+            ),
           ),
           20.verticalSpace,
           Row(
@@ -126,8 +131,6 @@ class RingPieChartPainter extends CustomPainter {
     var total = male + female;
     var malePercentage = (male / total) * 100;
     var femalePercentage = (female / total) * 100;
-
-
 
     // Draw the center circle with shadow
     final shadowPaint = Paint()

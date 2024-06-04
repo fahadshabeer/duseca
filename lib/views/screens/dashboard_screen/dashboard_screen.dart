@@ -1,3 +1,5 @@
+import 'package:duseca_task/views/screens/dashboard_screen/custom_widgets/social_cards.dart';
+import 'package:duseca_task/views/shared_components/custom_appBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,38 +13,23 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Overview'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {},
-          ),
-          CircleAvatar(
-            child: Icon(Icons.person),
-          ),
+      appBar: CustomAppbar(),
+      body: ListView(
+
+        children: [
+          10.verticalSpace,
+          OverviewHeader(),
+          10.verticalSpace,
+          const SocialCards(),
+          10.verticalSpace,
+          const FollowersCard(),
+          SizedBox(height: 10.h),
+          GenderCard(),
+          SizedBox(height: 10.h),
+          ActivityCard(),
+          SizedBox(height: 10.h),
+          StatisticsCard(),
         ],
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: ListView(
-          children: [
-            10.verticalSpace,
-            OverviewHeader(),
-            SizedBox(height: 10.h),
-            FollowersCard(),
-            SizedBox(height: 10.h),
-            GenderCard(),
-            SizedBox(height: 10.h),
-            ActivityCard(),
-            SizedBox(height: 10.h),
-            StatisticsCard(),
-          ],
-        ),
       ),
     );
   }
