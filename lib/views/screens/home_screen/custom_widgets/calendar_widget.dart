@@ -25,6 +25,7 @@ class CalendarWidget extends StatelessWidget {
       ),
       child: TableCalendar(
         rowHeight: 41.sp,
+        availableGestures: AvailableGestures.none,
         headerStyle: const HeaderStyle(
           formatButtonVisible: false,
           titleCentered: true
