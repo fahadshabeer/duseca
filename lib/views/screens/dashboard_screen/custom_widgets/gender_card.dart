@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:duseca_task/controllers/static_controllers/static_controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,31 +39,16 @@ class GenderCard extends StatelessWidget {
           SizedBox(height: 10.h),
           Expanded(
             child: Center(
-              child: FutureBuilder(
-                  future: load(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return CustomPaint(
-                        size: Size(200.sp, 200.sp),
-                        painter: RingPieChartPainter(
-                            maleColor: maleColor,
-                            femaleColor: femaleColor,
-                            male,
-                            image: snapshot.data,
-                            female),
-                      );
-                    } else {
-                      return CustomPaint(
-                        size: Size(200.sp, 200.sp),
-                        painter: RingPieChartPainter(
-                            maleColor: maleColor,
-                            femaleColor: femaleColor,
-                            male,
-                            female),
-                      );
-                    }
-                  }),
+              child: CustomPaint(
+                size: Size(200.sp, 200.sp),
+                painter: RingPieChartPainter(
+                    maleColor: maleColor,
+                    femaleColor: femaleColor,
+                    male,
+                    image: StaticControllers.image,
+                    female),
             ),
+          ),
           ),
           20.verticalSpace,
           Row(
@@ -100,12 +86,7 @@ class GenderCard extends StatelessWidget {
     );
   }
 
-  Future<ui.Image> load() async {
-    final ByteData data = await rootBundle.load('assets/images/woman.png');
-    final codec = await ui.instantiateImageCodec(data.buffer.asUint8List());
-    final frame = await codec.getNextFrame();
-    return frame.image;
-  }
+
 }
 
 class RingPieChartPainter extends CustomPainter {
@@ -136,7 +117,7 @@ class RingPieChartPainter extends CustomPainter {
     final shadowPaint = Paint()
       ..style = PaintingStyle.fill
       ..color = Colors.grey.withOpacity(0.5)
-      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 10); // Shadow blur
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10); // Shadow blur
     canvas.drawCircle(
         center + Offset(5, 5), 40.sp, shadowPaint); // Offset for shadow
 

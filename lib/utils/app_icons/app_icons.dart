@@ -14,4 +14,17 @@ class AppIcons
   static const settings="$basicPath/settings.svg";
   static const search="$basicPath/search.svg";
   static const logo="$basicPath/logo.svg";
+  static const pdf="$basicPath/pdf.svg";
+  static const send="$basicPath/Send.svg";
+  static const attachments="$basicPath/attachment.svg";
+  static const image="$basicPath/image.svg";
+  static const smile="$basicPath/smile.svg";
+  static const cart="$basicPath/cart.svg";
+  static const mail="$basicPath/mail.svg";
+  static const chat="$basicPath/chat.svg";
+  static const tasks="$basicPath/tasks.svg";
+  static const projects="$basicPath/projects.svg";
+  static const fileManager="$basicPath/file_manger.svg";
+  static const notes="$basicPath/Notes.svg";
+  static const contact="$basicPath/contact.svg";
 }

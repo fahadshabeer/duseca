@@ -40,7 +40,7 @@ class CustomAvatarUtils {
     );
   }
 
-  Widget getAlphAvatar(String name){
+  static Widget getAlphAvatar(String name){
     return Container(
       decoration: BoxDecoration(
         gradient:CustomAvatarUtils.generateRandomLinearGradient(),

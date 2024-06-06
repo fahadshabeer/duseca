@@ -19,7 +19,7 @@ class SquareIconButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.sp),
           boxShadow: [
             BoxShadow(
-                color: Colors.grey,
+                color: Colors.grey.withOpacity(0.4),
                 blurRadius: 1.sp,
                 spreadRadius: 0.1
             )

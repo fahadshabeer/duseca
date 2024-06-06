@@ -1,19 +1,33 @@
+import 'package:duseca_task/controllers/static_controllers/static_controllers.dart';
 import 'package:duseca_task/utils/colors/app_colors.dart';
 import 'package:duseca_task/views/screens/home_screen/custom_widgets/month_week_day_widget.dart';
 import 'package:duseca_task/views/shared_components/custom_appBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../shared_components/custom_drawer/app_drawer.dart';
 import 'custom_widgets/calendar_widget.dart';
 import 'custom_widgets/upcoming_events_widget/upcoming_events_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppbar(),
+      appBar: CustomAppbar(
+        navKey: StaticControllers.sliderDrawerKey,
+      ),
       body: ListView(
         children: [
           Padding(
@@ -21,24 +35,6 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                  const Expanded(child: MonthWeekDayWidget()),
-                    10.horizontalSpace,
-                    MaterialButton(
-                      color: AppColors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14.sp)
-                      ),
-                      height: 48.h,
-                      minWidth: 48.h,
-                      onPressed: (){},
-                      child: const Icon(Icons.add,color: Colors.white,),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16.h),
                 const CalendarWidget(),
                 SizedBox(height: 16.h),
                 Text('Upcoming', style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold)),

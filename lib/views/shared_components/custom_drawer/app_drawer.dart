@@ -1,5 +1,8 @@
+import 'package:duseca_task/controllers/static_controllers/static_controllers.dart';
 import 'package:duseca_task/utils/app_icons/app_icons.dart';
 import 'package:duseca_task/utils/colors/app_colors.dart';
+import 'package:duseca_task/utils/nav_utils/navigation_helper.dart';
+import 'package:duseca_task/views/screens/dashboard_screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,6 +10,7 @@ import 'custom_app_drawer_tile.dart';
 import 'drawer_bottom_widget.dart';
 
 class AppDrawer extends StatefulWidget {
+
   const AppDrawer({super.key});
 
   @override
@@ -14,8 +18,11 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  int selected = 3;
-
+  int selected=2;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -27,23 +34,29 @@ class _AppDrawerState extends State<AppDrawer> {
           padding: EdgeInsets.only(bottom: 30.sp, top: 20.sp),
           shrinkWrap: true,
           children: [
-            SvgPicture.asset(AppIcons.logo),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 10.sp),
+                child: SvgPicture.asset(AppIcons.logo),
+              ),
+            ),
             CustomAppDrawerTile(
               icon: AppIcons.dashboard,
               iconColor: selected == 0 ? Colors.blue : null,
               title: 'Overview',
               onTap: () {
-                setState(() {
-                  selected = 0;
-                });
+                selected=0;
+                if(mounted)setState(() {});
+                StaticControllers.pageController.jumpToPage(0);
+                StaticControllers.sliderDrawerKey.currentState?.closeSlider();
               },
               color: selected == 0
                   ? const Color(0xff1A8EFF).withOpacity(0.10)
                   : Colors.transparent,
             ),
             CustomAppDrawerTile(
-                icon: 'assets/icons/e_commmererce.svg',
-
+                icon: AppIcons.cart,
                 iconColor: selected == 1 ? Colors.blue : null,
                 title: 'E-Commerce',
                 onTap: () {
@@ -64,16 +77,17 @@ class _AppDrawerState extends State<AppDrawer> {
               iconColor: selected == 2 ? Colors.blue : null,
               title: 'Calender',
               onTap: () {
-                setState(() {
-                  selected = 2;
-                });
+                selected=2;
+                if(mounted)setState(() {});
+                StaticControllers.pageController.jumpToPage(2);
+                StaticControllers.sliderDrawerKey.currentState?.closeSlider();
               },
               color: selected == 2
                   ? const Color(0xff1A8EFF).withOpacity(0.10)
                   : Colors.transparent,
             ),
             CustomAppDrawerTile(
-                icon: 'assets/icons/mail.svg',
+                icon: AppIcons.mail,
                 iconColor: selected == 3 ? Colors.blue : null,
                 title: 'Mail',
                 onTap: () {
@@ -99,20 +113,21 @@ class _AppDrawerState extends State<AppDrawer> {
                   ),
                 )),
             CustomAppDrawerTile(
-              icon: 'assets/icons/chat.svg',
+              icon: AppIcons.chat,
               iconColor: selected == 4 ? Colors.blue : null,
               title: 'Chat',
               onTap: () {
-                setState(() {
-                  selected = 4;
-                });
+                selected=4;
+                if(mounted)setState(() {});
+                StaticControllers.pageController.jumpToPage(4);
+                StaticControllers.sliderDrawerKey.currentState?.closeSlider();
               },
               color: selected == 4
                   ? const Color(0xff1A8EFF).withOpacity(0.10)
                   : Colors.transparent,
             ),
             CustomAppDrawerTile(
-              icon: 'assets/icons/tasks.svg',
+              icon: AppIcons.tasks,
               iconColor: selected == 5 ? Colors.blue : null,
               title: 'Tasks',
               onTap: () {
@@ -125,7 +140,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   : Colors.transparent,
             ),
             CustomAppDrawerTile(
-              icon: 'assets/icons/projects.svg',
+              icon: AppIcons.projects,
               iconColor: selected == 6 ? Colors.blue : null,
               title: 'Projects',
               onTap: () {
@@ -138,7 +153,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   : Colors.transparent,
             ),
             CustomAppDrawerTile(
-              icon: 'assets/icons/file_manager.svg',
+              icon: AppIcons.fileManager,
               iconColor: selected == 7 ? Colors.blue : null,
               title: 'File Manager',
               onTap: () {
@@ -151,7 +166,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   : Colors.transparent,
             ),
             CustomAppDrawerTile(
-              icon: 'assets/icons/notes.svg',
+              icon: AppIcons.notes,
               iconColor: selected == 8 ? Colors.blue : null,
               title: 'Notes',
               onTap: () {
@@ -164,7 +179,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   : Colors.transparent,
             ),
             CustomAppDrawerTile(
-              icon: 'assets/icons/contacts.svg',
+              icon: AppIcons.contact,
               iconColor: selected == 9 ? Colors.blue : null,
               title: 'Contact',
               onTap: () {

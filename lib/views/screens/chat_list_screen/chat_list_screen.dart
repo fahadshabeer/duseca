@@ -1,3 +1,4 @@
+import 'package:duseca_task/controllers/static_controllers/static_controllers.dart';
 import 'package:duseca_task/utils/app_icons/app_icons.dart';
 import 'package:duseca_task/views/screens/chat_list_screen/custom_widgets/all_chats.dart';
 import 'package:duseca_task/views/screens/chat_list_screen/custom_widgets/chat_tile.dart';
@@ -13,7 +14,9 @@ class ChatListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(),
+      appBar: CustomAppbar(
+        navKey: StaticControllers.sliderDrawerKey,
+      ),
       body: Column(
         children: [
           const CustomSearchBar(),
